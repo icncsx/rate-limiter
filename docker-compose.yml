@@ -1,0 +1,15 @@
+version: "3"
+services:
+  redis-server:
+    image: "redis"
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+        - 8080:8080
+    environment:
+        - NODE_ENV=development
+        - PORT=8080
+    depends_on:
+        - redis-server     
